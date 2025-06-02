@@ -1,7 +1,41 @@
+# Project overview
+
+Currency exchanger - is a mobile application built with React Native. It's purpose is to fetch currency rates from public api and allow you to save your favorite rates that are available even in offline mode.
+
+## Technical description
+
+### Architecture is modular
+
+It's typical for mobile apps. Allows to explicitly separate concerns of the project, for example *components* folder that contains minimal UI building blocks that are being used across the app or *modules* folder that contains bussiness logic of the app.
+
+### App structure
+
+App consists of two screens, List and Favorites. Navigation between the screens is managed with **bottom tabs navigation**. Each screen displays a list of currencies and their rates. List screen shows list of every currency available and Favorites screen shows only favorite ones.
+
+Major components that are used accross the app are:
+
+- Loader - shows ActivitiIndicator component while data is being fetched
+- Tile.Currency - tile of the list that shows currency and it's rate
+- Icon - renders icons based on name passed as prop
+
+### Offline mode implementation
+
+Offline mode is implemented with the help of redux persistor and async storage. Each time data is fetched from the remote, at first it is saved to async storage and then it's being selected from the local storage to be displayed on screens.
+
+Both favorites and last fetched items are saved, therefore both of the list are available offline.
+
+### Libraries used
+
+- React Navigation - navigation
+- React Redux - state management
+- Redux Saga - side effect manager
+- Reac Native Fast Image - optimized loading of currency icons
+- Axios - API requests
+- React Native Svg - rendering of svg icons
+
+## Getting Started
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
-
-# Getting Started
-
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
 ## Step 1: Start Metro
