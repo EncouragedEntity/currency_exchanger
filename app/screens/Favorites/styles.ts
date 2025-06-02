@@ -5,6 +5,7 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 8,
   },
   list: {
     height: '100%',
@@ -20,5 +21,10 @@ export default StyleSheet.create({
     padding: 8,
     borderRadius: 16,
     backgroundColor: 'transparent',
+  },
+  title: {
+    alignSelf: 'flex-start',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

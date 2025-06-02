@@ -24,6 +24,9 @@ export default React.memo(() => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}> 
+        Based on USD
+      </Text>
       <FlatList
         style={styles.list}
         data={Object.entries(favorites)}
