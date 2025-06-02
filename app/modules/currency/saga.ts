@@ -3,7 +3,7 @@ import { all, call, put, select, takeLeading } from 'redux-saga/effects';
 import Api, { HttpResponse } from 'app/services/api';
 import * as actions from './actions';
 import { type Currency } from './types';
-
+import ENV from 'app/environments'
 
 function* list(event: ReturnType<typeof actions.request.list>):any {
   const { resolve, reject, payload } = event;
@@ -24,6 +24,7 @@ function* list(event: ReturnType<typeof actions.request.list>):any {
       params: {...payload}
     });
 
+    // ? Mock data
     // const response: Response = yield call(Api.mock, {
     //   success: true,
     //   terms: 'https://example.com/terms',
@@ -67,9 +68,11 @@ function* list(event: ReturnType<typeof actions.request.list>):any {
     const { rates } = response.data;
 
     const ratesWithIcons: Record<string, Currency> = Object.entries(rates).reduce((acc, [currency, data]) => {
+      const ICON_URL = `${ENV.url.assets}icons/${currency}.png`;
+
       acc[currency] = {
         ...data,
-        icon: `https://assets.coinlayer.com/icons/${currency}.png`,
+        icon: ICON_URL,
       };
       return acc;
     }, {} as Record<string, Currency>);

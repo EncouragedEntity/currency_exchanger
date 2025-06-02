@@ -33,5 +33,5 @@ const reducer = createReducer(initial, builder => {
 export default persistReducer({
   key: 'currency',
   storage: AsyncStorage,
-  whitelist: ['favorites'],
+  blacklist: ['events'],
 }, reducer);

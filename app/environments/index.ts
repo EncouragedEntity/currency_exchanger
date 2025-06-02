@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { API_URL, ENVIRONMENT, ACCESS_KEY } from './env.development';
+import { API_URL, ASSETS_URL, ENVIRONMENT, ACCESS_KEY } from './env.development';
 
 console.log('ENVIRONMENT', ENVIRONMENT);
 
@@ -14,5 +14,6 @@ export default {
   url: {
     key: ACCESS_KEY,
     api: API_URL,
+    assets: ASSETS_URL,
   } as const,
 } as const;
