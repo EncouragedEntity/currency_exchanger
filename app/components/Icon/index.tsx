@@ -2,7 +2,7 @@ import React from 'react';
 import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-export type IconName = 'favorite';
+export type IconName = 'favorite' | 'list';
 
 export interface IconProps {
   fill?: ColorValue;
@@ -12,10 +12,25 @@ export interface IconProps {
 }
 
 const Component = React.memo<IconProps>(props => {
-  const { name, fill = 'none', accent = '#000000', size = 24 } = props;
+  const { name, fill = 'none', accent = '#000', size = 24 } = props;
 
   switch (name) {
     default: return null;
+
+    case 'list': return (
+      <Svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        {...props}
+      >
+        <Path
+          d="M4 7a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H5a1 1 0 0 1-1-1m5 0a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1m-5 5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m5 0a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1m-5 5a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1m5 0a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1"
+          fill={fill}
+        />
+      </Svg>
+    );
 
     case 'favorite': return (
       <Svg

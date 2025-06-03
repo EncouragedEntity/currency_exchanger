@@ -16,6 +16,8 @@ export default React.memo(() => {
   const list = useSelector(CurrencyModule.getList);
   const favorites = useSelector(CurrencyModule.getFavorites);
 
+  const data = React.useMemo(() => Object.entries(list), [list]);
+
   const toggleFavorite = React.useCallback((currency: string) => {
     const isCurrentlyFavorite = !!favorites[currency];
     dispatch(CurrencyModule.favorites({ currency, favorite: !isCurrentlyFavorite }));
@@ -30,13 +32,15 @@ export default React.memo(() => {
     <Loader.Screen /> 
   ) : (
     <View style={styles.container}>
-      <Text style={styles.title}> 
-        Based on USD
-      </Text>
+      {data.length > 0 &&
+        <Text style={styles.title}> 
+          Based on USD
+        </Text>
+      }
 
       <FlatList
         style={styles.list}
-        data={Object.entries(list)}
+        data={data}
         extraData={favorites}
         keyExtractor={(item) => item[0]}
         renderItem={({ item }) => {
@@ -56,7 +60,7 @@ export default React.memo(() => {
               )}
               trailing={() => (
                 <TouchableOpacity style={styles.favoriteButton} onPress={() => toggleFavorite(item[0])} activeOpacity={0.8}>
-                    <Icon name='favorite' fill={isFavorite ? '#000000' : 'none'} />
+                    <Icon name='favorite' fill={isFavorite ? '#000' : 'none'} />
                 </TouchableOpacity>
               )}
             />

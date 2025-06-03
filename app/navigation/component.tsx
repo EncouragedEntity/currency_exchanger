@@ -7,6 +7,7 @@ import routes from './routes';
 
 import Favorites from 'app/screens/Favorites';
 import List from 'app/screens/List';
+import Icon from 'app/components/Icon';
 
 
 const Tabs = React.memo(() => {
@@ -17,12 +18,20 @@ const Tabs = React.memo(() => {
       <BottomTab.Screen
         name={routes.root.list}
         component={List}
-        options={{tabBarLabel: 'List', headerTitle: 'List'}}
+        options={{
+          tabBarLabel: 'List',
+          headerTitle: 'List',
+          tabBarIcon: ({ focused, color }) => <Icon name='list' fill={focused ? color : '#000'} />,
+        }}
       />
       <BottomTab.Screen
         name={routes.root.favorites}
         component={Favorites}
-        options={{tabBarLabel: 'Favorites', headerTitle: 'Favorites'}}
+        options={{
+          headerTitle: 'Favorites',
+          tabBarLabel: 'Favorites',
+          tabBarIcon: ({ focused, color }) => <Icon name='favorite' accent={focused ? color : '#000'} />,
+        }}
       />
     </BottomTab.Navigator>
   );
