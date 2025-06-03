@@ -20,7 +20,7 @@ const reducer = createReducer(initial, builder => {
 
   builder.addCase(actions.reduce.list, (state, { payload }) => ({
     ...state,
-    list: {...state.list, ...payload.list },
+    list: payload.list,
   }));
 
   builder.addCase(actions.reduce.favorites, (state, { payload }) => ({

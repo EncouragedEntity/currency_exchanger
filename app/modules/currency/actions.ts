@@ -9,7 +9,7 @@ export const request = {
     target?: string;
     sybmols?: Array<string>;
     expand?: 0 | 1;
-  }, void>('[CURRENCY][LIST][REQUEST]'),
+  } | void, void>('[CURRENCY][LIST][REQUEST]'),
   favorites: createAction<{
     currency: string;
     favorite: boolean;

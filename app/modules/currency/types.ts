@@ -16,6 +16,6 @@ export interface State {
     [key: string]: Currency;
   };
   favorites: {
-    [key: string]: Currency | undefined;
+    [key: string]: Currency;
   };
 }

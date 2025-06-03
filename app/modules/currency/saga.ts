@@ -20,50 +20,50 @@ function* list(event: ReturnType<typeof actions.request.list>):any {
       rates: Record<string, Currency>;
     }>;
 
-    const response: Response = yield call(Api.get, 'live', {
-      params: {...payload}
-    });
+    // const response: Response = yield call(Api.get, 'live', {
+    //   params: {...payload}
+    // });
 
     // ? Mock data
-    // const response: Response = yield call(Api.mock, {
-    //   success: true,
-    //   terms: 'https://example.com/terms',
-    //   privacy: 'https://example.com/privacy',
-    //   timestamp: Date.now(),
-    //   target: 'USD',
-    //   rates: {
-    //     'ABC': {
-    //       'rate': 1.2,
-    //       'high': 1.3,
-    //       'low': 1.1,
-    //       'vol': 1000000,
-    //       'cap': 50000000,
-    //       'sup': 21000000,
-    //       'change': 0.05,
-    //       'change_pct': 4.2,
-    //     },
-    //     '611': {
-    //       'rate': 0.8,
-    //       'high': 0.9,
-    //       'low': 0.7,
-    //       'vol': 500000,
-    //       'cap': 25000000,
-    //       'sup': 15000000,
-    //       'change': -0.02,
-    //       'change_pct': -2.5,
-    //     },
-    //     "ADL": {
-    //       "rate":0.01515,
-    //       "high":0.025,
-    //       "low":0.015,
-    //       "vol":null,
-    //       "cap":null,
-    //       "sup":null,
-    //       "change":0,
-    //       "change_pct":0,
-    //     }
-    //   },
-    // });
+    const response: Response = yield call(Api.mock, {
+      success: true,
+      terms: 'https://example.com/terms',
+      privacy: 'https://example.com/privacy',
+      timestamp: Date.now(),
+      target: 'USD',
+      rates: {
+        'ABC': {
+          'rate': 1.2,
+          'high': 1.3,
+          'low': 1.1,
+          'vol': 1000000,
+          'cap': 50000000,
+          'sup': 21000000,
+          'change': 0.05,
+          'change_pct': 4.2,
+        },
+        '611': {
+          'rate': 0.8,
+          'high': 0.9,
+          'low': 0.7,
+          'vol': 500000,
+          'cap': 25000000,
+          'sup': 15000000,
+          'change': -0.02,
+          'change_pct': -2.5,
+        },
+        "ADL": {
+          "rate":0.01515,
+          "high":0.025,
+          "low":0.015,
+          "vol":null,
+          "cap":null,
+          "sup":null,
+          "change":0,
+          "change_pct":0,
+        }
+      },
+    });
 
     const { rates } = response.data;
 
@@ -95,7 +95,7 @@ function* favorites(event: ReturnType<typeof actions.request.favorites>): any {
   try {
     yield put(actions.reduce.events('favorites', true));
 
-    const favorites: Record<string, Currency | undefined> = yield select((state: any) => state.currency.favorites);
+    const favorites: Record<string, Currency> = yield select((state: any) => state.currency.favorites);
     const list: Record<string, Currency> = yield select((state: any) => state.currency.list);
 
     const updatedFavorites = { ...favorites };

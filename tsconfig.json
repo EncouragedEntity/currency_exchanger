@@ -5,7 +5,7 @@
     "paths": {
       "app": ["app/*"]
     },
-    "types": ["webpack-env", "node"],
+    "types": ["webpack-env", "node", "jest"],
     "lib": ["es2020"]
   },
   "include": [
