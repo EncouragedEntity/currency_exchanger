@@ -14,8 +14,8 @@ export default React.memo<Props>(props => {
   const { title, subtitle, style, leading, trailing } = props;
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.leading, style]}>
+    <View style={[style, styles.container]}>
+      <View style={styles.leading}>
         {leading?.()}
       </View>
 
