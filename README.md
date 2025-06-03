@@ -4,19 +4,29 @@ Currency exchanger - is a mobile application built with React Native. It's purpo
 
 ## Technical description
 
-### Architecture is modular
+### Architecture
 
-It's typical for mobile apps. Allows to explicitly separate concerns of the project, for example *components* folder that contains minimal UI building blocks that are being used across the app or *modules* folder that contains bussiness logic of the app.
+Project implements modular architecture. It's typical for mobile apps. Allows to explicitly separate concerns of the project, for example **components** folder that contains minimal UI building blocks that are being used across the app or **modules** folder that contains bussiness logic of the app.
+
+> Note that hardcoded strings or colors, that are used accross the app **are intended**. This project is small, so I don't want to waste time on setting up theme or localization. But if it was a normal project, and not a test task, I would've.
+
+Also, it's worth checking **\_\_tests\_\_** folder out. There are some basic tests for main app functionalities
 
 ### App structure
 
 App consists of two screens, List and Favorites. Navigation between the screens is managed with **bottom tabs navigation**. Each screen displays a list of currencies and their rates. List screen shows list of every currency available and Favorites screen shows only favorite ones.
 
-Major components that are used accross the app are:
+Major custom components that are used accross the app are:
 
 - Loader - shows ActivitiIndicator component while data is being fetched
 - Tile.Currency - tile of the list that shows currency and it's rate
 - Icon - renders icons based on name passed as prop
+
+And components from react-native:
+
+- View - basic UI building block
+- Text - text
+- FlatList - UI builder of list with defined set of data
 
 ### Offline mode implementation
 
@@ -32,6 +42,7 @@ Both favorites and last fetched items are saved, therefore both of the list are 
 - Reac Native Fast Image - optimized loading of currency icons
 - Axios - API requests
 - React Native Svg - rendering of svg icons
+- Jest - testing
 
 ## Getting Started
 
